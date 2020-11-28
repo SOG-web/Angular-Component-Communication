@@ -6,6 +6,7 @@ import { AuthGuard } from './user/auth-guard.service';
 import { ShellComponent } from './home/shell.component';
 import { WelcomeComponent } from './home/welcome.component';
 import { PageNotFoundComponent } from './home/page-not-found.component';
+import { ProductModule } from './products/product.module';
 
 @NgModule({
     imports: [
@@ -18,7 +19,8 @@ import { PageNotFoundComponent } from './home/page-not-found.component';
                     {
                         path: 'products',
                         // canActivate: [AuthGuard],
-                        loadChildren: './products/product.module#ProductModule'
+                        // ()=> ProductModule was used because of angular cli error
+                        loadChildren: () => ProductModule
                     },
                     { path: '', redirectTo: 'welcome', pathMatch: 'full' },
                 ]
